@@ -493,3 +493,94 @@ Your `gh` token already had the required `repo` scope, so no extra auth was need
 - If you'd prefer a custom domain later, that's also an API call (`PUT .../pages` with a `cname`).
 
 Want me to set a repo description/homepage link, or add a redirect so the ugly filename URL also points to the clean one?
+
+---
+
+_**User**_
+
+I updated @Year Unwrapped (standalone).html . Recreate the index.html and update the github pages site
+
+---
+
+_**Agent (claude-opus-4-8)**_
+
+I'll recreate `index.html` from the updated file and push it so Pages rebuilds.
+
+_**Agent (claude-opus-4-8)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cp "Year Unwrapped (standalone).html" index.html && git add index.html && git status --short</summary>
+
+```bash
+cp "Year Unwrapped (standalone).html" index.html && git add index.html && git status --short
+```
+
+```
+ M .cursor/hooks/state/continual-learning.json
+ M .specstory/history/2026-07-02_23-45-24-0400-github-pages-publishing.md
+ M .specstory/statistics.json
+ M "Year Unwrapped (standalone).html"
+M  index.html
+?? "_old-Year Unwrapped (standalone).html"
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-opus-4-8)**_
+
+<think><details><summary>Thought Process</summary>
+I need to commit both the updated standalone HTML file and index.html to keep them in sync, while leaving the old backup file untouched.</details></think>
+
+_**Agent (claude-opus-4-8)**_
+
+I'll commit both the updated standalone file and the regenerated `index.html`, then push.
+
+_**Agent (claude-opus-4-8)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: git add "Year Unwrapped (standalone).html" index.html && git commit --trailer "Co-authored-by: Cursor <cursoragent@cursor.com>" -m "Update published review and regenerate index.html" && git push origin main</summary>
+
+```bash
+git add "Year Unwrapped (standalone).html" index.html && git commit --trailer "Co-authored-by: Cursor <cursoragent@cursor.com>" -m "Update published review and regenerate index.html" && git push origin main
+```
+
+```
+[main b5400ef] Update published review and regenerate index.html
+ 2 files changed, 8 insertions(+), 9 deletions(-)
+To https://github.com/betterbydesign/annual-review-wrapped-2026.git
+   b125f1b..b5400ef  main -&gt; main
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-opus-4-8)**_
+
+Pushed. Now polling the Pages build until the live site reflects the update.
+
+_**Agent (claude-opus-4-8)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: sleep 15; for i in $(seq 1 12); do s=$(gh api repos/betterbydesign/annual-review-wrapped-2026/pages/builds/latest 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('status'), d.get('duration'), d.get('commit'))"); echo "attempt $i: build=[$s]"; case "$s" in built*) break;; errored*) break;; esac; sleep 20; done; echo "---HTTP---"; curl -s -o /dev/null -w "%{http_code}\n" https://betterbydesign.github.io/annual-review-wrapped-2026/</summary>
+
+```bash
+sleep 15; for i in $(seq 1 12); do s=$(gh api repos/betterbydesign/annual-review-wrapped-2026/pages/builds/latest 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('status'), d.get('duration'), d.get('commit'))"); echo "attempt $i: build=[$s]"; case "$s" in built*) break;; errored*) break;; esac; sleep 20; done; echo "---HTTP---"; curl -s -o /dev/null -w "%{http_code}\n" https://betterbydesign.github.io/annual-review-wrapped-2026/
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
