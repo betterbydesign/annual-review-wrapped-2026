@@ -577,6 +577,14 @@ _**Agent (claude-opus-4-8)**_
 ```bash
 sleep 15; for i in $(seq 1 12); do s=$(gh api repos/betterbydesign/annual-review-wrapped-2026/pages/builds/latest 2>&1 | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('status'), d.get('duration'), d.get('commit'))"); echo "attempt $i: build=[$s]"; case "$s" in built*) break;; errored*) break;; esac; sleep 20; done; echo "---HTTP---"; curl -s -o /dev/null -w "%{http_code}\n" https://betterbydesign.github.io/annual-review-wrapped-2026/
 ```
+
+```
+attempt 1: build=[building 0 b5400ef154e4b40fc4341467731e28284e8467f8]
+attempt 2: build=[built 25319 b5400ef154e4b40fc4341467731e28284e8467f8]
+---HTTP---
+200
+
+```
 </details>
 </tool-use>
 
@@ -584,3 +592,46 @@ sleep 15; for i in $(seq 1 12); do s=$(gh api repos/betterbydesign/annual-review
 <summary>Tool use: **run_terminal_command_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-opus-4-8)**_
+
+Done. The updated version is live.
+
+- Regenerated `index.html` from your updated `Year Unwrapped (standalone).html`, committed both, and pushed to `main`.
+- Pages rebuilt successfully (commit `b5400ef`, ~25s build) and the site returns `200`.
+
+**https://betterbydesign.github.io/annual-review-wrapped-2026/**
+
+Note: your browser may cache the old page—hard‑refresh (Cmd+Shift+R) if you don't see the changes immediately.
+
+One heads‑up: I noticed an untracked `_old-Year Unwrapped (standalone).html` backup file in the repo. I left it alone. Want me to delete it or add it to `.gitignore`?
+
+---
+
+_**User**_
+
+delete
+
+---
+
+_**Agent (claude-opus-4-8)**_
+
+I'll delete the untracked backup file.
+
+_**Agent (claude-opus-4-8)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-opus-4-8)**_
+
+Deleted `_old-Year Unwrapped (standalone).html`. It was untracked, so nothing to commit—your repo and the live Pages site are unaffected.
