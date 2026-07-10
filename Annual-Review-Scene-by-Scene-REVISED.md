@@ -1,4 +1,4 @@
-# Scott Foster — Year in Review “Unwrapped”
+# Scott Foster — Year in Review “Wrapped”
 ## Revised Scene-by-Scene Browser Story
 
 *Window: July 2025 – June 2026*  
@@ -19,7 +19,7 @@
 ## Scene 01 — Cover
 
 **Headline:**  
-Scott Foster · Year Unwrapped
+Scott Foster · Year Wrapped
 
 **Subline:**  
 Web Technology · July 2025 – June 2026

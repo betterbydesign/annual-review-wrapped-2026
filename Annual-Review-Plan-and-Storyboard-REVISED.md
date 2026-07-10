@@ -1,4 +1,4 @@
-# Scott Foster — Annual Review “Unwrapped”
+# Scott Foster — Annual Review “Wrapped”
 ## Revised Browser-Based Plan, Metric System & Copy Direction
 
 *Prepared for the July 2025 → June 2026 review window.*  
